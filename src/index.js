@@ -1,19 +1,44 @@
 import './styles.css';
-import './js/rafs'
-import './js/request'
+import refs from './js/refs'
+import apiService from './js/apiService'
+import updateMarkup from './js/markup'
+import scroll from './js/scroll';
 
+refs.form.addEventListener('submit', handleFormSubmit);
 
-// 1.HTTP-запрос на Pixabay API
-// поддерживает пагинацию, в ответе приходит по 12 объектов, параметр per_page
-// свойства: webformatURL,largeImageURL,likes,views,comments,downloads
+function handleFormSubmit(event) {
+  event.preventDefault();
 
-// 2. Форма поиска, Галерея изображений, Карточка изображения
-// DOM-элемент - шаблонизация
+  refs.gallery.innerHTML = '';
+//   refs.gallery.removeEventListener('click', handleOnGalleryClick);
 
-// 3. Кнопку Load more - догружаться следующая порция изображений и рендериться вместе с предыдущими.
-// window.scrollTo().
+  const form = event.currentTarget;
+  apiService.query = form.elements.query.value;
 
-// Дополнительно:
-// - pnotify
-// - модалка - basicLightbox
-// - Load more - спинер
+  apiService.resetPage();
+  fetchImages();
+
+//   refs.gallery.addEventListener('click', handleOnGalleryClick);
+  form.reset();
+}
+
+refs.button.addEventListener('click', fetchImages);
+
+function fetchImages() {
+  refs.button.classList.add('is-hidden');
+
+  apiService
+    .fetchImages()
+    .then(images => {
+      if (images.length === 0) {
+        showNotice();
+
+        return;
+      }
+
+      updateMarkup(images);
+      refs.button.classList.remove('is-hidden');
+      scroll();
+    })
+    .catch(console.log);
+}
