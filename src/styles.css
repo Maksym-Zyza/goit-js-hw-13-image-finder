@@ -23,7 +23,7 @@ span {
   margin-top: 20px;
 }
 
-.input {
+input {
   display: block;
   margin: 0 auto 15px;
   width: 60%;
@@ -33,6 +33,7 @@ span {
   font-size: 20px;
   font-weight: 700;
   color: #252424;
+  outline: none;
 }
 
 .gallery {
@@ -57,21 +58,15 @@ span {
   transform: scale(1.03);
 }
 
-.gallery__image {
-  height: 100%;
+/* .gallery__item:hover {
+  cursor: zoom-in;
+} */
+
+.image {
   width: 100%;
+  height: 262px;
   object-fit: cover;
   transition: transform var(--animation-duration) var(--timing-function);
-}
-
-.gallery__link {
-  display: block;
-  text-decoration: none;
-  height: 100%;
-}
-
-.gallery__link:hover {
-  cursor: zoom-in;
 }
 
 .photo-card {
@@ -103,11 +98,16 @@ span {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  appearance: none;
+  height: 40px;
+  padding: 0 30px;
   border: 0;
-  border-radius: 5px;
+  border-radius: 10px;
   background: #4676d7;
   color: #fff;
-  padding: 8px 16px;
-  font-size: 16px;
+  font-size: 20px;
+  outline-color: #fff;
+}
+
+.load-more-button:hover {
+  transform: scale(1.03);
 }
