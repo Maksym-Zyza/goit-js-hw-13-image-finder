@@ -6,6 +6,3 @@ const refs = {
 
 export default refs;
 
-// console.log(refs.form);
-// console.log(refs.gallery);
-// console.log(refs.button);

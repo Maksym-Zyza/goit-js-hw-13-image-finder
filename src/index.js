@@ -4,13 +4,12 @@ import apiService from './js/apiService'
 import updateMarkup from './js/markup'
 import scroll from './js/scroll';
 
-refs.form.addEventListener('submit', handleFormSubmit);
+refs.form.addEventListener('submit', formSubmit);
 
-function handleFormSubmit(event) {
+function formSubmit(event) {
   event.preventDefault();
 
   refs.gallery.innerHTML = '';
-//   refs.gallery.removeEventListener('click', handleOnGalleryClick);
 
   const form = event.currentTarget;
   apiService.query = form.elements.query.value;
@@ -18,7 +17,6 @@ function handleFormSubmit(event) {
   apiService.resetPage();
   fetchImages();
 
-//   refs.gallery.addEventListener('click', handleOnGalleryClick);
   form.reset();
 }
 
