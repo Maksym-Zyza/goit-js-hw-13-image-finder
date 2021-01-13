@@ -21,6 +21,8 @@ body {
 
 span {
   color: grey;
+  margin-left: 5px;
+  margin-right: 20px;
 }
 
 .search-form {
@@ -43,7 +45,7 @@ input {
 
 .gallery {
   display: grid;
-  width: 1200px;
+  width: 100%;
   grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
   grid-auto-rows: 300px;
   grid-gap: 12px;
@@ -93,8 +95,6 @@ input {
 }
 
 .material-icons {
-  margin-left: 20px;
-  margin-right: 5px;
   align-items: center;
   color: grey;
 }
@@ -190,4 +190,38 @@ input {
 .lightbox__button:hover,
 .lightbox__button:focus {
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* scroll top */
+.toTopBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  border: 1px solid grey;
+}
+
+#toTop {
+  position: fixed;
+  display: flex;
+  bottom: 10px;
+  right: -40px;
+  width: 40px;
+  height: 40px;
+  z-index: 100;
+  cursor: pointer;
+  text-align: center;
+
+  opacity: 0;
+  visibility: hidden;
+}
+
+#toTop.is-hidden {
+  opacity: 0.8;
+  visibility: visible;
+  right: calc(3%);
+}
+
+#toTop:hover {
+  transform: scale(1.03);
 }

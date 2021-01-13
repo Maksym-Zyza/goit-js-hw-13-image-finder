@@ -6,6 +6,7 @@ const refs = {
   btnClose: document.querySelector('.lightbox__button'),
   overlayDiv: document.querySelector('.lightbox__overlay'),
   openImg: document.querySelector('.lightbox__image'),
+  btnToTop: document.querySelector('.toTopBtn')
 };
 
 export default refs;

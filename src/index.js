@@ -27,6 +27,7 @@ refs.button.addEventListener('click', fetchImages);
 
 function fetchImages() {
   refs.button.classList.add('is-hidden');
+  refs.btnToTop.classList.remove('is-hidden');
 
   apiService
     .fetchImages()
@@ -40,7 +41,14 @@ function fetchImages() {
       updateMarkup(images);
       refs.button.classList.remove('is-hidden');
       scroll();
-      notice.showSuccess()
+
+      if (apiService.page < 3) {
+        notice.showSuccess()
+      } else {
+      refs.btnToTop.classList.add('is-hidden');
+       }
     })
     .catch(({message})=> notise.showError(message));
 }
+
+
